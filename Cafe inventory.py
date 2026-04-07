@@ -26,8 +26,6 @@ print("Created inventory_sample.csv and sales_sample.csv")
 from typing import List, Dict
 
 def load_inventory(filename: str) -> List[Dict[str, str]]:
-    '''Load inventory from CSV into a list of dicts.'''
-    # TODO
     inventory = []
     with open(filename, newline = "", encoding="utf-8" ) as d: # opening the file, and encoding it to convert to bytes for python to read. 'd' is what I chose to name the file.
       reading_files = csv.DictReader(d) #reading through the file.
@@ -38,8 +36,6 @@ def load_inventory(filename: str) -> List[Dict[str, str]]:
 
 
 def load_sales(filename: str) -> List[Dict[str, str]]:
-    '''Load sales from CSV into a list of dicts.'''
-    # TODO
     sales = []
     with open(filename, newline = "", encoding="utf-8") as d: # opening the file, and encoding it to convert to bytes for python to read. 'd' is what I chose to name the file.
       reading_files = csv.DictReader(d) #reading through the file.
@@ -50,13 +46,6 @@ def load_sales(filename: str) -> List[Dict[str, str]]:
 
 
 def process_sales(inventory: List[Dict[str, str]], sales: List[Dict[str, str]]) -> float:
-    '''
-    Process each sale:
-      - reduce quantity_in_stock
-      - compute total revenue
-    Return total revenue as float.
-    '''
-    # TODO
     total_revenue = 0.0 #starts the counter at 0, like a fresh start.
     for sale in sales: #Looking through every sale.
       name = sale["item_name"] #looks at a specific item, saves it in a variable.
@@ -74,8 +63,6 @@ def process_sales(inventory: List[Dict[str, str]], sales: List[Dict[str, str]]) 
 
 
 def low_stock_items(inventory: List[Dict[str, str]], threshold: int = 5) -> List[Dict[str, str]]:
-    '''Return list of items with quantity_in_stock < threshold.'''
-    # TODO
     #raise NotImplementedError("Implement low_stock_items")
     low_stock = []
     for item in inventory: #Looking through every item in the inventory.
@@ -83,13 +70,6 @@ def low_stock_items(inventory: List[Dict[str, str]], threshold: int = 5) -> List
         low_stock.append(item) # if yes, then it appends it into the low_stock list. If not, then nothing happens.
     return low_stock
 def main() -> None:
-    '''
-    Main program:
-      - Load inventory and sales
-      - Process sales
-      - Print total revenue
-      - Print low-stock items
-    '''
     inventory = load_inventory("inventory_sample.csv") #calling the function.
     sales = load_sales("sales_sample.csv") #calling the function.
     revenue = process_sales(inventory, sales) #this is getting the revenue.
